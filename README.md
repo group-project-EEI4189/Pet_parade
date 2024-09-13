@@ -1,2 +1,2 @@
 # Pet_parade
-frontend for user authentications (login and sign in)
+E commerce platform for pet products and pet adoption.
