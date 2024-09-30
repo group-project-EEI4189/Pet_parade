@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Parade - Dog Foods & Medicines</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Pet Parade</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Show Case</a></li>
+                <li><a href="#">Best Sellings</a></li>
+                <li class="account"><a href="#">Account</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Cat</button>
+                    <div class="dropdown-content">
+                        <a href="cat-page.html">Foods & Medicines</a>
+                        <a href="#">Accessories & Toys</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <button class="dropbtn">Dog</button>
+                    <div class="dropdown-content">
+                        <a href="#dog-foods">Foods & Medicines</a>
+                        <a href="#">Accessories & Toys</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dog-section">
+            <h2 id="dog-foods">Dog Foods</h2>
+            <div class="product-cards">
+                <!-- Updated 10 Dog Food products -->
+                <div class="product-card">
+                    <img src="assest/royal canin dogfood.png" alt="Royal Canin Breed Health Nutrition">
+                    <h3>Royal Canin Breed Health Nutrition</h3>
+                    <p>Specialized formulas based on specific dog breeds, addressing unique health needs.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/hill's DF.png" alt="Hill's Science Diet">
+                    <h3>Hill's Science Diet</h3>
+                    <p>Made with natural ingredients, supports healthy digestion, skin, coat, and energy.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/blue DF.png" alt="Blue Buffalo Life Protection Formula">
+                    <h3>Blue Buffalo Life Protection Formula</h3>
+                    <p>Contains real meat, wholesome grains, and vegetables to support immune system health.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/purina DF.png" alt="Purina Pro Plan">
+                    <h3>Purina Pro Plan</h3>
+                    <p>Offers advanced nutrition with high-quality protein and omega-3 for joint health.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/wellness DF.png" alt="Wellness CORE Grain-Free">
+                    <h3>Wellness CORE Grain-Free</h3>
+                    <p>High-protein, grain-free dog food made with premium meats, fruits, and vegetables.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/merrick DF.png" alt="Merrick Grain-Free Dog Food">
+                    <h3>Merrick Grain-Free Dog Food</h3>
+                    <p>Features deboned meat as the first ingredient, suitable for sensitive dogs.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/nutro DF.png" alt="Nutro Ultra Adult Dry Dog Food">
+                    <h3>Nutro Ultra Adult Dry Dog Food</h3>
+                    <p>Made with lean proteins and antioxidants to promote a healthy immune system.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/taste DF.png" alt="Taste of the Wild">
+                    <h3>Taste of the Wild</h3>
+                    <p>Includes high-quality proteins and probiotics to support digestion and overall health.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/orijen DF.png" alt="Orijen Original Dog Food">
+                    <h3>Orijen Original Dog Food</h3>
+                    <p>Biologically appropriate food with high protein from fresh, regional ingredients.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/caniddae DF.png" alt="Canidae Pure Limited Ingredient">
+                    <h3>Canidae Pure Limited Ingredient</h3>
+                    <p>Simple, limited ingredient diet for dogs with food sensitivities or allergies.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <h2 id="dog-medicines">Dog Medicines</h2>
+            <div class="product-cards">
+                <!-- Updated 10 Dog Medicine products -->
+                <div class="product-card">
+                    <img src="assest/carprofen DM.png" alt="Carprofen (Rimadyl)">
+                    <h3>Carprofen (Rimadyl)</h3>
+                    <p>A non-steroidal anti-inflammatory drug used for treating pain and inflammation.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/metro DM.png" alt="Metronidazole">
+                    <h3>Metronidazole</h3>
+                    <p>An antibiotic for treating bacterial infections, often in the gastrointestinal tract.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/apoquel DM.png" alt="Apoquel">
+                    <h3>Apoquel</h3>
+                    <p>Relieves itching due to allergic skin conditions, commonly used for dermatitis.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/gabapentin DM.png" alt="Gabapentin">
+                    <h3>Gabapentin</h3>
+                    <p>Medication for nerve pain and seizures, also used to calm dogs during stressful events.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/heartgard DM.png" alt="Heartgard Plus">
+                    <h3>Heartgard Plus</h3>
+                    <p>Prevents heartworm disease and treats hookworm and roundworm infections.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/trifexis DM.png" alt="Trifexis">
+                    <h3>Trifexis</h3>
+                    <p>Combines flea prevention with heartworm and intestinal worm treatment.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/cerenia DM.png" alt="Cerenia">
+                    <h3>Cerenia</h3>
+                    <p>Used to prevent and treat nausea and vomiting, often for motion sickness.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/simparica DM.png" alt="Simparica Trio">
+                    <h3>Simparica Trio</h3>
+                    <p>Chewable tablet that protects against fleas, ticks, heartworm, and other parasites.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/amoxicillin DM.png" alt="Amoxicillin-Clavulanate (Clavamox)">
+                    <h3>Amoxicillin-Clavulanate (Clavamox)</h3>
+                    <p>Antibiotic for treating skin, respiratory, and urinary tract infections.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="assest/deramaxx DM.png" alt="Deramaxx">
+                    <h3>Deramaxx</h3>
+                    <p>An NSAID used for controlling pain and inflammation in osteoarthritis and surgery.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Swipe.Shop.Snuggle</p>
+        <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
