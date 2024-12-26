@@ -1,9 +1,9 @@
 @extends('layouts.app')
-
+@section('title', 'Edit Pet Details')
 @section('content')
 <div class="container">
     <h1>Edit Pet</h1>
-    <form action="{{ route('pets.update', $pet->id) }}" method="POST" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('pets.update', $pet->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <label>Breed</label>
@@ -15,7 +15,7 @@
         <label>Description</label>
         <textarea name="description" required>{{ $pet->description }}</textarea>
 
-        <label>Image</label>
+        <label>Upload New Image (optional)</label>
         <input type="file" name="image">
 
         <button type="submit">Update</button>
