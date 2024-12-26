@@ -1,6 +1,9 @@
-namespace App\Http\Controllers;
+<?php
 
+namespace App\Http\Controllers;
+use App\Models\PetDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
