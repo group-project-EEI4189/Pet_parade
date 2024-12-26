@@ -95,6 +95,11 @@ class PetController extends Controller
         return redirect()->route('pets.index')->with('status', 'Pet deleted successfully!');
     }
 
+    public function confirmDelete($id) {
+        $pet = Petdetails::findOrFail($id);
+        return view('pets.delete', compact('pet'));
+    }
+
     public function index()
     {
         $pets = PetDetails::all();
