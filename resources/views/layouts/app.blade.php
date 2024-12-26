@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Parade</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <title>@yield('title', 'Pet Parade Admin')</title>
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Pet Parade</h1>
-    </header>
-
-    <div class="container">
-        @yield('content')
+    <div class="navbar">
+        <div class="logo-brand">
+            <img src="{{ asset('HomePageImages/Logo.png') }}" alt="Logo">
+            <span>Pet Parade Admin</span>
+        </div>
+        <nav>
+            <a href="{{ route('pets.index') }}">Dashboard</a>
+            <a href="{{ route('pets.create') }}">Add Pet</a>
+        </nav>
     </div>
 
-    <footer>
-        <p>© 2024 Pet Parade</p>
-    </footer>
+    <div class="content">
+        @yield('content')
+    </div>
 </body>
 </html>
