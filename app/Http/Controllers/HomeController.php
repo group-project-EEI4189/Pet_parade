@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function home() {
         return view('home');
     }
 }
