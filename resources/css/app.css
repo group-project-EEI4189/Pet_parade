@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset and Base Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navigation Bar Styling */
+header {
+    background-color: #f8c7c4; /* Light pink background */
+    position: sticky; /* Sticks to the top when scrolling */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Minimal height and spacing */
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .logo img {
+    height: 40px; /* Smaller height for the logo */
+    border-radius: 50%;
+}
+
+header .logo span {
+    font-size: 20px; /* Slightly smaller text */
+    font-weight: bold;
+    color: #333;
+}
+
+/* Main Navigation */
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px; /* Smaller font size */
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+header nav a:hover {
+    color: #ff6f61; /* Coral shade on hover */
+    background-color: #ffe6e4; /* Subtle background hover effect */
+}
+
+/* Category Buttons (Cat & Dog Filters) */
+header .categories {
+    display: flex;
+    gap: 10px;
+}
+
+header .categories button {
+    border: none;
+    border-radius: 15px;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+header .categories button#cat-button {
+    background-color: #fff;
+    color: #ff6f61;
+    border: 2px solid #ff6f61;
+}
+
+header .categories button#cat-button:hover {
+    background-color: #ffe6e4;
+}
+
+header .categories button#dog-button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: 2px solid #ff6f61;
+}
+
+header .categories button#dog-button:hover {
+    background-color: #ff5a4d;
+}
+
+/* Product Section */
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: calc(25% - 20px); /* Smaller size for products */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.product-card .add-to-cart {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.product-card .add-to-cart:hover {
+    background-color: #ff5a4d;
+}
