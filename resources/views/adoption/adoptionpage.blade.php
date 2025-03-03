@@ -46,7 +46,7 @@
                         <p>{{ $pet->description }}</p>
                     </div>
                     <div class="adopt-btn">
-                        <a href="{{ route('adoption.form', ['id' => $pet->id]) }}" class="btn">Adopt</a>
+                        <a href="{{ route('adoption.form', ['id' => $pet->id]) }}" class="btna">Adopt Me</a>
                     </div>
                 </div>
             @endforeach
@@ -56,8 +56,11 @@
     <footer class="main-footer">
         <div class="container footer-content">
             <div class="footer-left">
-                <img src="{{ asset('HomePageImages/Logo.png') }}" alt="Pet Parade Logo" class="footer-logo">
-                <p>Swipe. Shop. Snuggle.</p>
+                <div class="logo-brand">
+                    <img src="{{ asset('HomePageImages/Logo.png') }}" alt="Pet Parade Logo" class="footer-logo">
+                    <div class="brand">Pet Parade</div>
+                </div>
+                <div>Swipe. Shop. Snuggle.</div>
             </div>
             <div class="footer-center">
                 <a href="#">Terms & Conditions</a>
