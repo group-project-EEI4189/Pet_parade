@@ -18,7 +18,9 @@
             @foreach($pets as $pet)
                 <tr>
                     <td>{{ $pet->id }}</td>
-                    <td><img src="{{ asset('HomePageImages/' . $pet->image) }}" alt="Pet Image" width="60"></td>
+                    <td><img src="{{ asset('storage/pets/' . $pet->image) }}" alt="Pet Image" width="60">
+                    </td>
+
                     <td>{{ $pet->breed }}</td>
                     <td>{{ $pet->age }}</td>
                     <td>{{ $pet->description }}</td>
