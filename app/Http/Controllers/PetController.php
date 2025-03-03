@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class PetController extends Controller
 {
-    public function adoptionPage()
+    public function adoptionpage()
     {
         $pets = PetDetails::all();
-        return view('adoption.adoptionPage', compact('pets'));
+        return view('adoption.adoptionpage', compact('pets'));
     }
 
     
@@ -54,8 +54,6 @@ class PetController extends Controller
             return redirect()->back()->withErrors(['image' => 'Image upload failed. Please try again.']);
         }
     }
-
-
     
     public function edit($id)
     {
@@ -107,4 +105,4 @@ class PetController extends Controller
         return view('pets.index', compact('pets'));
     }
     
-}      
+}   
