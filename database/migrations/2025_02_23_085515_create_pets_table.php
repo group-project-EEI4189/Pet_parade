@@ -1,20 +1,31 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class PetDetails extends Model
+return new class extends Migration
 {
-    use HasFactory;
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('pets', function (Blueprint $table) {
+            $table->id();
+            $table->string('breed');
+            $table->integer('age');
+            $table->text('description');
+            $table->string('image');
+            $table->timestamps();
+        });
+    }
 
-    protected $table = 'pets';
-
-    protected $fillable = [
-        'breed',
-        'age',
-        'description',
-        'image'
-    ];
-}
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('pets');
+    }
+};
