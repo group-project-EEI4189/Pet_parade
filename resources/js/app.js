@@ -1,5 +1,14 @@
 import './bootstrap';
 
+// thatushi's code
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
+// ishari's code
+
 // Wait until the DOM content is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart'); // Select all 'Add to Cart' buttons
@@ -55,34 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
 // navigation bar function
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Reference the category buttons
     const catButton = document.getElementById('cat-button');
     const dogButton = document.getElementById('dog-button');
-
-    // Reference the sub-navigation links
     const foodLink = document.getElementById('food-link');
     const accessoriesLink = document.getElementById('accessories-link');
 
-    // Default category (Dog)
-    updateNavigation(dogButton.dataset.foodUrl, dogButton.dataset.accessoriesUrl);
-
-    // Add event listeners to the category buttons
-    catButton.addEventListener('click', () => {
-        updateNavigation(catButton.dataset.foodUrl, catButton.dataset.accessoriesUrl);
-    });
-
-    dogButton.addEventListener('click', () => {
-        updateNavigation(dogButton.dataset.foodUrl, dogButton.dataset.accessoriesUrl);
-    });
+    // Check if there is a previously selected category in localStorage
+    let selectedCategory = localStorage.getItem('selectedCategory') || 'dog';
 
     // Function to update navigation links
-    function updateNavigation(foodUrl, accessoriesUrl) {
-        // Update the href attributes of the links
+    function updateNavigation(foodUrl, accessoriesUrl, category) {
         foodLink.href = foodUrl;
         accessoriesLink.href = accessoriesUrl;
 
-        // Provide visual feedback for the active category
-        if (foodUrl.includes('cat')) {
+        if (category === 'cat') {
             catButton.classList.add('bg-pink-600', 'text-white');
             catButton.classList.remove('bg-white', 'text-pink-600');
 
@@ -95,8 +90,28 @@ document.addEventListener('DOMContentLoaded', () => {
             catButton.classList.add('bg-white', 'text-pink-600');
             catButton.classList.remove('bg-pink-600', 'text-white');
         }
+
+        // Store the selected category in localStorage
+        localStorage.setItem('selectedCategory', category);
     }
+
+    // Set navigation based on the stored category
+    if (selectedCategory === 'cat') {
+        updateNavigation(catButton.dataset.foodUrl, catButton.dataset.accessoriesUrl, 'cat');
+    } else {
+        updateNavigation(dogButton.dataset.foodUrl, dogButton.dataset.accessoriesUrl, 'dog');
+    }
+
+    // Event listeners for category buttons
+    catButton.addEventListener('click', () => {
+        updateNavigation(catButton.dataset.foodUrl, catButton.dataset.accessoriesUrl, 'cat');
+    });
+
+    dogButton.addEventListener('click', () => {
+        updateNavigation(dogButton.dataset.foodUrl, dogButton.dataset.accessoriesUrl, 'dog');
+    });
 });
+
 
 
 

@@ -9,24 +9,25 @@
 </head>
 
 <body>
-     <!-- Include the Navbar -->
-     @include('navbar')
+    <!-- Include the Navbar -->
+    @include('navbar')
+
     <main>
         <h1>Your Cart</h1>
 
-        <!-- Container to display cart items -->
+        <!-- Cart Items Container -->
         <div id="cart-items"></div>
 
-        <!-- Button to clear the cart -->
+        <!-- Clear Cart Button -->
         <button id="clear-cart">Clear Cart</button>
     </main>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const cartItemsContainer = document.getElementById('cart-items'); // Reference to the container for cart items
+            const cartItemsContainer = document.getElementById('cart-items'); // Reference to cart items container
             const clearCartButton = document.getElementById('clear-cart'); // Reference to the 'Clear Cart' button
 
-            // Function to load cart items from localStorage and display them
+            // Function to load cart items from localStorage
             function loadCart() {
                 const cart = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from localStorage or initialize empty array
 
@@ -35,12 +36,14 @@
                     return;
                 }
 
-                // Generate HTML for each cart item and add it to the container
+                // Generate HTML for each cart item and display it
                 cartItemsContainer.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}" style="width: 100px;">
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-details">
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                        </div>
                     </div>
                 `).join('');
             }
@@ -52,7 +55,7 @@
                 alert('Cart has been cleared.');
             });
 
-            // Load the cart items on page load
+            // Load cart items on page load
             loadCart();
         });
     </script>

@@ -14,6 +14,12 @@ class ProductController extends Controller
         return view('admin.products.index', compact('products'));
     }
 
+    // Show the Cat Food page
+    public function catFoodPage()
+    {
+        return view('cat_food');
+    }
+
     // Show form to create a new product
     public function create()
     {

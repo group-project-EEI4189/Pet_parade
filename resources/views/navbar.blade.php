@@ -2,7 +2,7 @@
     <div class="container mx-auto flex justify-between items-center">
         <!-- Logo Section -->
         <div class="flex items-center space-x-2">
-            <img src="{{ asset('images/logo.png') }}" alt="Pet Parade Logo" class="h-10">
+            <img src="{{ asset('images/Homepageimages/Logo.png') }}" alt="Logo" class="h-10">
             <span class="font-bold text-lg text-gray-800">Pet Parade</span>
         </div>
 
