@@ -1,0 +1,319 @@
+body {
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #fff9f3;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.main-header {
+    background-color: #ffe3d3;
+    padding: 5px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.brand {
+    color: #502710;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navigation ul {
+    display: flex;
+    list-style: none;
+}
+
+.navigation ul li {
+    margin-right: 30px;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: #502710;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.navigation ul li a:hover {
+    color: #f79628;
+}
+
+.account-btn .btn {
+    background-color: #f5927a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+
+.hero-section {
+    text-align: center;
+    padding: 100px 0;
+    background-color: #ffede2;
+}
+
+.hero-heading {
+    font-size: 2rem;
+    color: #502710;
+}
+
+.subheading {
+    font-size: 1.5rem;
+    color: #804c2f;
+    margin-top: 10px;
+}
+
+
+.pets-showcase .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  
+    gap: 30px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+
+.pet-card {
+    border: 2px solid #ffe3d3;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.pet-card:hover {
+    transform: translateY(-10px);
+}
+
+
+.pet-img img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+.pet-details {
+    padding: 20px;
+    color: #502710;
+    text-align: center;
+}
+
+.pet-details p {
+    margin-bottom: 10px;
+}
+
+
+.adopt-btn {
+    background-color: #f5927a;
+    
+    padding: 12px 25px;
+    border-radius: 8px;
+    
+    display: inline-block;
+    font-size: 1rem;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.adopt-btn a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.adopt-btn:hover {
+    background-color: #dd8a75;
+}
+
+.btna {
+    margin-left: 95px;
+}
+
+@media (max-width: 992px) {
+    .pets-showcase .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pets-showcase .grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.main-footer {
+    background-color: #ffe3d3;
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.footer-center a {
+    margin: 0 15px;
+    color: #502710;
+    text-decoration: none;
+}
+
+.footer-center a:hover {
+    color: #f79628;
+}
+
+.footer-right a {
+    color: #502710;
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    color: #f79628;
+}
+
+.logo-brand{
+    display: flex;
+    align-items: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+    backdrop-filter: blur(6px);
+    display: block;
+}
+
+
+.form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    width: 450px;
+    max-width: 95%;
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.form-container h2 {
+    font-size: 2rem;
+    color: #502710;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #804c2f;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1a48d;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #f79628;
+    box-shadow: 0 0 6px rgba(247, 150, 40, 0.3);
+}
+
+button.btn {
+    background-color: #f5927a;
+    color: white;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #dd8a75;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 22px;
+    color: #f44336;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
