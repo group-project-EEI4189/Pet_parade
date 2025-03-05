@@ -11,6 +11,9 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\GoogleController; 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PetController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdoptionController;
 
 
 // User routes
@@ -118,6 +121,22 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('admin.cart.destroy');
 });
 
-
+// Zahrath's
+Route::get('/', [HomeController::class, 'home'])->name('home');
+// Admin dashboard for pet management
+Route::get('/pets/index', [PetController::class, 'index'])->name('pets.index');
+Route::get('/pets/create', [PetController::class, 'create'])->name('pets.create');
+Route::post('/pets/store', [PetController::class, 'store'])->name('pets.store');
+Route::get('/pets/{id}/edit', [PetController::class, 'edit'])->name('pets.edit');
+Route::put('/pets/{id}', [PetController::class, 'update'])->name('pets.update');
+Route::get('/pets/{id}/delete', [PetController::class, 'confirmDelete'])->name('pets.confirmDelete');
+Route::delete('/pets/{id}', [PetController::class, 'destroy'])->name('pets.destroy');
+// Admin dashboard for pet adoption management
+Route::get('/adoption', [PetController::class, 'adoptionpage'])->name('adoptionpage');
+Route::get('/adoption/form/{id}', [AdoptionController::class, 'showForm'])->name('adoption.form');
+Route::post('/adoption/submit', [AdoptionController::class, 'submitAdoption'])->name('adoption.submit');
+Route::get('/pets/indexadoption', [AdoptionController::class, 'indexadoption'])->name('pets.indexadoption');
+Route::post('/pets/indexadoption', [AdoptionController::class, 'storeadoption'])->name('pets.storeadoption');
+Route::delete('/adoptions/{id}', [AdoptionController::class, 'destroy'])->name('adoptions.destroy');
 
 
