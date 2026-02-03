@@ -1,70 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Head section: meta tags, title, Bootstrap, FontAwesome, custom styles, Vite assets -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PETPARADE</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        body { background: #f8fafc; }
-        .navbar-brand { font-weight: bold; font-size: 1.5rem; color: #ff9800 !important; }
-        .navbar { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        footer { background: #222; color: #fff; padding: 2rem 0; margin-top: 3rem; }
-        .footer-links a { color: #ff9800; margin-right: 1rem; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #fffafa 0%, #fff6f8 100%);
+            color: #333;
+        }
+
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 1rem 2rem;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #e89080 !important;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            background: #fff;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid #e0d7cf;
+            text-align: center;
+        }
+
+        footer a {
+            color: #e89080;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section:last-child {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation bar: main site navigation with icons -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <!-- Brand/logo -->
             <a class="navbar-brand" href="/">
                 <i class="fa-solid fa-paw"></i> PETPARADE
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Navigation links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa-solid fa-house"></i> Home</a></li>
+                @php
+                    $sessionCart = session('cart', []);
+                    $cartCount = 0;
+                    if (is_array($sessionCart)) {
+                        foreach ($sessionCart as $it) { $cartCount += $it['quantity'] ?? 0; }
+                    }
+                    if (\Illuminate\Support\Facades\Auth::check()) {
+                        $cartCount += \App\Models\Cart::where('user_id', \Illuminate\Support\Facades\Auth::id())->sum('quantity');
+                    }
+                @endphp
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/shop"><i class="fa-solid fa-store"></i> Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/orders"><i class="fa-solid fa-box"></i> My Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/products"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i> Cart <span id="cart-count" style="background:#ff6b81;color:#fff;padding:2px 8px;border-radius:12px;margin-left:6px;font-weight:700;">{{ $cartCount }}</span></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-cart-image" href="/cart" title="Go to cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main content section: page-specific content will be injected here -->
-    <main>
+    <!-- Main content -->
+    <main class="container-fluid">
         @yield('content')
     </main>
 
-    <!-- Footer: site links, contact info, social icons -->
-    <footer class="text-center">
-        <div class="container">
-            <div class="footer-links mb-2">
-                <a href="/shop">Shop</a>
-                <a href="/cart">Cart</a>
-                <a href="/orders">Orders</a>
-                <a href="/admin/products">Admin</a>
-            </div>
-            <div>
-                <span>Contact: info@petparade.com | </span>
-                <span>Follow us:
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </span>
-            </div>
-            <div class="mt-2">&copy; {{ date('Y') }} PETPARADE. All rights reserved.</div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-section">
+            <i class="fa-solid fa-paw" style="color: #e89080; margin-right: 0.5rem;"></i>
+            <strong style="color: #e89080;">Pet Parade</strong>
+        </div>
+        <div class="footer-section">
+            <a href="#"><strong>Terms & Conditions</strong></a> | 
+            <a href="#"><strong>Privacy Policy</strong></a> | 
+            <a href="#"><strong>Contact Us</strong></a>
+        </div>
+        <div class="footer-section" style="font-size: 0.9rem; color: #999;">
+            Swipe.Shop.Snuggle
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

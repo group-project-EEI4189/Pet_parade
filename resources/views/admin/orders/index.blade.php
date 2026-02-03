@@ -21,7 +21,14 @@
             @foreach($orders as $order)
             <tr>
                 <td>{{ $order->id }}</td>
-                <td>{{ $order->user->name ?? 'N/A' }}</td>
+                <td>
+                    @if($order->user)
+                        {{ $order->user->name }}
+                    @else
+                        <div>{{ $order->guest_name ?? 'Guest' }}</div>
+                        <div class="text-muted small">{{ $order->guest_email ?? '' }}</div>
+                    @endif
+                </td>
                 <td>{{ ucfirst($order->status) }}</td>
                 <td>{{ $order->total }}</td>
                 <td>
@@ -41,9 +48,12 @@
                             @csrf
                             <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
                         </form>
-                    @else
-                        <span class="text-muted">No actions</span>
                     @endif
+                    <form action="{{ route('admin.orders.destroy', $order) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Permanently delete this order?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
