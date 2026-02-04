@@ -82,3 +82,8 @@ Check logs if it shows:
  storage/logs/laravel.log
 ```
 The application should now be running successfully
+- ### Inaddition, wants to check functions and log in as an admin
+Seed only categories and subcategories (no example products)
+```bash
+ php artisan db:seed
+```
