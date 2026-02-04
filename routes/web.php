@@ -44,19 +44,15 @@ Route::get('/admin', function () {
     return redirect()->route('admin.products.index');
 })->name('admin');
 
-// User Cart Routes (require auth)
-Route::middleware(['auth'])->group(function () {
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
-    Route::post('/cart/update/{cart}', [CartController::class, 'update'])->name('cart.update');
-    Route::delete('/cart/remove/{cart}', [CartController::class, 'remove'])->name('cart.remove');
+// User Cart Routes (public — guests allowed)
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update/{cart?}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{cart?}', [CartController::class, 'remove'])->name('cart.remove');
 
-    // Order routes (user)
-    Route::post('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
-    Route::get('/orders', [OrderController::class, 'userOrders'])->name('orders.user');
-
-    
-});
+// Order routes (public for guest checkout)
+Route::post('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
+Route::get('/orders', [OrderController::class, 'userOrders'])->name('orders.user');
 
 // Admin Product & Order Management
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -67,6 +63,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('orders/{order}/confirm', [OrderController::class, 'adminConfirm'])->name('orders.confirm');
     Route::post('orders/{order}/cancel', [OrderController::class, 'adminCancel'])->name('orders.cancel');
+    Route::delete('orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 });
 
 // Public users page (no auth required)
