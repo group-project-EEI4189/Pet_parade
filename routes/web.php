@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -7,6 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\AuthController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -15,34 +16,37 @@ use App\Http\Controllers\Admin\ProductController;
 */
 
 // Home / Shop page route (shop is the homepage)
-Route::get('/', [ShopController::class, 'index'])->name('shop');
-Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/', function () {return view('welcome');});
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/shop.index', [ShopController::class, 'index'])->name('shop.index');
 
 // Simple authentication routes (lightweight)
-Route::get('/login', function () {
-    return view('auth.login');
+Route::get('/login', function () {return view('auth.login');
 })->name('login');
+
+Route::get('/register', [AuthController::class, 'showRegister']);
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/admin/products/index', function () {
+
+    if (Auth::user()->role !== 'admin') {
+        abort(403);
+    }return view('admin.products.index');
+})->middleware('auth')->name('admin.products.index');
 
 Route::post('/login', function (Request $request) {
     $credentials = $request->only('email', 'password');
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
-        return redirect()->intended('/admin');
+        return redirect()->intended('/shop');
     }
     return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
 });
 
-Route::post('/logout', function (Request $request) {
+Route::post('/logout', function () {
     Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
     return redirect('/');
-})->name('logout');
-
-// Simple admin landing (redirect to products index)
-Route::get('/admin', function () {
-    return redirect()->route('admin.products.index');
-})->name('admin');
+});
 
 // User Cart Routes (public — guests allowed)
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

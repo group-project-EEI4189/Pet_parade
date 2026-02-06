@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(180deg, #fffafa 0%, #fff6f8 100%);
@@ -23,7 +24,7 @@
 
         .navbar {
             background: #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             padding: 1rem 2rem;
         }
 
@@ -64,7 +65,55 @@
         }
     </style>
 </head>
+
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    {{-- <a href="/" class="text-xl font-bold text-gray-800 hover:text-gray-900">
+                        MyShop
+                    </a> --}}
+                </div>
+
+                {{-- Menu --}}
+                <div class="flex items-center space-x-4">
+                    @auth
+                        <span class="text-gray-700">Hi, {{ auth()->user()->name }}</span> &nbsp;&nbsp;&nbsp;
+
+                        <form method="POST" action="{{ url('/logout') }}" class="inline">
+                            @auth
+                                @if (auth()->user()->role === 'admin')
+                                    <a href="{{ route('admin.products.index') }}"
+                                        style="text-gray-700">
+                                         Admin Dashboard
+                                    </a>
+                                @endif
+                            @endauth
+
+                            @csrf
+                            <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                                Logout
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ url('/login') }}" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
+                            Login
+                        </a>
+                        <a href="{{ url('/register') }}"
+                            class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600">
+                            Register
+                        </a>
+
+                    @endauth
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button class="text-red-500">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -79,15 +128,23 @@
                     $sessionCart = session('cart', []);
                     $cartCount = 0;
                     if (is_array($sessionCart)) {
-                        foreach ($sessionCart as $it) { $cartCount += $it['quantity'] ?? 0; }
+                        foreach ($sessionCart as $it) {
+                            $cartCount += $it['quantity'] ?? 0;
+                        }
                     }
                     if (\Illuminate\Support\Facades\Auth::check()) {
-                        $cartCount += \App\Models\Cart::where('user_id', \Illuminate\Support\Facades\Auth::id())->sum('quantity');
+                        $cartCount += \App\Models\Cart::where('user_id', \Illuminate\Support\Facades\Auth::id())->sum(
+                            'quantity',
+                        );
                     }
                 @endphp
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/shop"><i class="fa-solid fa-store"></i> Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i> Cart <span id="cart-count" style="background:#ff6b81;color:#fff;padding:2px 8px;border-radius:12px;margin-left:6px;font-weight:700;">{{ $cartCount }}</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shop"><i class="fa-solid fa-store"></i> Shop</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                            Cart <span id="cart-count"
+                                style="background:#ff6b81;color:#fff;padding:2px 8px;border-radius:12px;margin-left:6px;font-weight:700;">{{ $cartCount }}</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link nav-cart-image" href="/cart" title="Go to cart">
                             <i class="fa-solid fa-cart-shopping"></i>
@@ -110,8 +167,8 @@
             <strong style="color: #e89080;">Pet Parade</strong>
         </div>
         <div class="footer-section">
-            <a href="#"><strong>Terms & Conditions</strong></a> | 
-            <a href="#"><strong>Privacy Policy</strong></a> | 
+            <a href="#"><strong>Terms & Conditions</strong></a> |
+            <a href="#"><strong>Privacy Policy</strong></a> |
             <a href="#"><strong>Contact Us</strong></a>
         </div>
         <div class="footer-section" style="font-size: 0.9rem; color: #999;">
@@ -121,4 +178,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

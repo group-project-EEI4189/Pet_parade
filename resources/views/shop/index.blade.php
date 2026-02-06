@@ -380,6 +380,7 @@
                         <input type="text" name="q" placeholder="Search products..." value="{{ old('q', $q ?? request('q')) }}" class="search-input" style="padding:8px 10px; border-radius:8px; border:1px solid #f0cfcf; flex:1; min-width:160px;">
                         <button type="submit" class="btn btn-red" style="padding:8px 12px;">Search</button>
                     </form>
+
                     <div style="margin-left:16px;">
                         <a href="{{ route('cart.index') }}" class="btn-cart-inline" title="View cart">
                             <i class="fa-solid fa-cart-shopping"></i>
