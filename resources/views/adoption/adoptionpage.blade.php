@@ -28,7 +28,7 @@
             <nav class="navigation">
                 <ul>
                     <li><a href="{{ route('shop.index') }}">Showcase</a></li>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                 </ul>
             </nav>
             <div class="account-btn">
