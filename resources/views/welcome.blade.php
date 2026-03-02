@@ -297,7 +297,7 @@
                         <img src="{{URL('images/HomepageImages/PawHome.png')}}" alt="A paw home">
                         <p>Pets & Pro Tips Corner</p>
                     </a>
-                    <a href="#" class="feature-box">
+                    <a href="{{ route('shop.index') }}" class="feature-box">
                         <img src="{{URL('images/HomepageImages/ManWithPet.png')}}" alt="A man with a pet">
                         <p>Showcase</p>
                     </a>
@@ -305,7 +305,7 @@
                         <img src="{{URL('images/HomepageImages/TwoPets.png')}}" alt="Two pets together">
                         <p>Best Selling</p>
                     </a>
-                    <a href="#" class="feature-box">
+                    <a href="{{ route('adoption.page') }}" class="feature-box">
                         <img src="{{URL('images/HomepageImages/Heart.png')}}" alt="Paw with Heart">
                         <p>Adopt a pet</p>
                     </a>
