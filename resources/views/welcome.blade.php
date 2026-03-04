@@ -239,6 +239,55 @@
             color: #522c16;
             text-decoration: none;
         }
+
+        .auth-nav-btn {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-login {
+            padding: 8px 20px;
+            border: 2px solid #dd8a75;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #dd8a75;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #dd8a75;
+            color: #ffffff;
+        }
+
+        .btn-register {
+            padding: 8px 22px;
+            background-color: #dd8a75;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-register:hover {
+            background-color: #c87460;
+        }
+
+        .btn-dashboard {
+            padding: 8px 22px;
+            background-color: #502710;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-dashboard:hover {
+            background-color: #3d1e0c;
+        }
     </style>
 </head>
 
@@ -254,20 +303,17 @@
                     
                 </div >
                         @if (Route::has('login'))
-                        <nav class="-mx-3 flex flex-1 justify-end">
+                        <div class="auth-nav-btn">
                             @auth
-                            <a
-                                href="{{ url('/shop') }}"> Dashboard </a>
+                                <a href="{{ url('/shop') }}" class="btn-dashboard">Dashboard</a>
                             @else
-                            <a
-                                href="{{ route('login') }}"> Log in </a> &nbsp;&nbsp;
+                                <a href="{{ route('login') }}" class="btn-login">Log in</a>
 
-                            @if (Route::has('register'))
-                            &nbsp;  <a 
-                                href="{{ url('/register') }}"> Register</a>
-                            @endif
+                                @if (Route::has('register'))
+                                    <a href="{{ url('/register') }}" class="btn-register">Register</a>
+                                @endif
                             @endauth
-                        </nav>
+                        </div>
                         @endif
                     </header>
             </nav>
