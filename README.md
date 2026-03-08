@@ -1,11 +1,11 @@
 # Pet_parade
-## Pet Parade is a full-stack web-based e-commerce platform developed to manage and sell pet-related products online. The system provides a smooth shopping experience for customers while offering a powerful admin dashboard to manage products, categories, orders, and users efficiently. 
+## Pet Parade is a full-stack web-based e-commerce platform developed to manage and sell pet-related products online. The system provides a smooth shopping experience for customers while offering a powerful admin dashboard to manage products, categories, orders, and users efficiently. In addition, adopt a pet trogh the online is also a key feature of this platform.
 
 ## Technologies used
 - Laravel
 - MYSQL
 - CSS
-- Google credencials
+- Google credentials
  
 ## Prerequisites
 - PHP (8.1+ recommended)
