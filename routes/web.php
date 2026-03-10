@@ -15,6 +15,7 @@ use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\BestSellingController;
 use App\Http\Controllers\TipController;
 use App\Http\Controllers\Admin\AdminTipController;
+use App\Http\Controllers\Auth\GoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +60,8 @@ Route::post('/logout', function () {
     return redirect('/');
 });
 
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 /* =========================
    Cart & Orders (User)
 ========================= */

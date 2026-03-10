@@ -63,12 +63,12 @@
                             </td>
                             <td style="font-weight:600;" id="item-subtotal-{{ $item->product->id }}">${{ number_format($item->product->price * $item->quantity, 2) }}</td>
                             <td class="text-end pe-4">
-                                <div class="d-flex action-btn-group justify-content-end">
+                                <div class="d-flex action-btn-group justify-content-space-between">
                                     <button type="button" class="btn btn-blue btn-sm d-flex align-items-center" onclick="submitUpdateForm({{ $item->product->id }})">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-1" aria-hidden>
+                                        <svg width="20" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-1" aria-hidden>
                                             <path d="M5 13l4 4L19 7" stroke="#042f4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
-                                        <span class="ms-1">Update</span>
+                                        <span class="ms-2">Update</span>
                                     </button>
                                     <form action="{{ route('cart.remove') }}" method="POST" class="ajax-cart-remove ms-2 d-inline" onsubmit="return confirm('Remove this item from your cart?');">
                                         @csrf
@@ -78,13 +78,13 @@
                                         @else
                                             <input type="hidden" name="product_id" value="{{ $item->product->id }}">
                                         @endif
-                                        <button type="submit" class="btn-remove btn-sm d-flex align-items-center">
+                                        <button type="submit" class="btn-remove btn-sm d-flex justify-content-space-between">
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-1" aria-hidden>
                                                 <path d="M3 6h18" stroke="#e05165" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#e05165" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M10 11v6m4-6v6" stroke="#e05165" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
-                                            <span class="ms-1">Remove</span>
+                                            <span  class="btn btn-blue btn-sm d-flex justify-content-space-between">Remove</span>
                                         </button>
                                     </form>
                                 </div>
@@ -96,8 +96,8 @@
             </div>
         </div>
             <div class="mt-3 d-flex justify-content-between align-items-center">
-                <a href="{{ route('shop') }}" class="btn btn-secondary">Continue Shopping</a>
-                <button type="button" class="btn btn-confirm ms-2" onclick="document.querySelector('.btn-confirm')?.click();">Confirm Order</button>
+                <a href="{{ route('shop') }}" class="btn btn-secondary">Continue </a>
+                <button type="button" class="btn btn-confirm ms-2" onclick="document.querySelector('.btn-confirm')?.click();">Confirm </button>
             </div>
         </div>
         <div class="col-md-4">

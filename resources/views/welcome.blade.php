@@ -239,6 +239,16 @@
             color: #522c16;
             text-decoration: none;
         }
+        .btn{
+            width: 100%;
+            height: 40px;
+            background-color: #F2968F;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -252,18 +262,18 @@
             <nav>
                 <div class="main-nav">
                     
-                </div >
+                </div>
                         @if (Route::has('login'))
-                        <nav class="-mx-3 flex flex-1 justify-end">
+                        <nav class ="btn">
                             @auth
-                            <a
+                            <a style="color: #ffffff"
                                 href="{{ url('/shop') }}"> Dashboard </a>
                             @else
-                            <a
-                                href="{{ route('login') }}"> Log in </a> &nbsp;&nbsp;
+                            <a style="color: #ffffff"
+                                href="{{ route('login') }}"> Login </a> &nbsp;&nbsp;
 
                             @if (Route::has('register'))
-                            &nbsp;  <a 
+                            &nbsp;  <a style="color: #ffffff"
                                 href="{{ url('/register') }}"> Register</a>
                             @endif
                             @endauth

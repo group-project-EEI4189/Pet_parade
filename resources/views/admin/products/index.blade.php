@@ -233,6 +233,15 @@
                 <i class="fas fa-heart"></i> Manage Adoptions
             </a>
 
+            <!-- tips -->
+             <a href="{{ route('admin.tips.index') }}" class="btn-add" style="background:linear-gradient(135deg,rgb(255, 211, 117),#ffd67e);">
+                <i class="fas fa-search"></i> Tips
+            </a>
+            <!-- Best sellings -->
+             <a href="{{ route('admin.selling.index') }}" class="btn-add" style="background:linear-gradient(135deg,#56ab2f,#a8e063);">
+                <i class="fas fa-check"></i> Best Sellings
+            </a>
+
         </div>
     </div>
 

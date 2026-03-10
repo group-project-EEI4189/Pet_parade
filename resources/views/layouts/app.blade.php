@@ -64,6 +64,43 @@
         .footer-section:last-child {
             margin-bottom: 0;
         }
+        .inline{
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            width: 100%;
+            height: 40px;
+            background-color: #F2968F;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 400;
+            color: white;
+            border-radius: 30px;
+            margin-right: 60%;
+            margin-top: 10%;
+            transition: all 0.2s;
+            transform: translateY(-5px);
+        } 
+        .btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .btn:active {
+            transform: translateY(0px);
+        }
+        .btn1{
+            width: 10%;
+            height: 40px;
+            background-color: #F2968F;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            flex: 5%
+            border-radius: 30px;
+            margin-top: 10px; 
+        }
     </style>
 </head>
 
@@ -72,30 +109,26 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    {{-- <a href="/" class="text-xl font-bold text-gray-800 hover:text-gray-900">
-                        MyShop
-                    </a> --}}
                 </div>
 
                 {{-- Menu --}}
-                <div class="flex items-center space-x-4">
+                <div class="inline">
                     @auth
-                        <span class="text-gray-700">Hi, {{ auth()->user()->name }}</span> &nbsp;&nbsp;&nbsp;
+                        <span class="text-gray-700">Hi, {{ auth()->user()->name }}</span>  
 
-                        <form method="POST" action="{{ url('/logout') }}" class="inline">
+                        <form method="POST" action="{{ url('/logout') }}">
                             @auth
                                 @if (auth()->user()->role === 'admin')
-                                    <a href="{{ route('admin.products.index') }}"
-                                        style="text-gray-700">
+                                    <a href="{{ route('admin.products.index') }}" style="color: #fff" class="btn1">
                                          Admin Dashboard
                                     </a>
                                 @endif
                             @endauth
 
                             @csrf
-                            <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                            {{-- <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
                                 Logout
-                            </button>
+                            </button> --}}
                         </form>
                     @else
                         <a href="{{ url('/login') }}" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
@@ -109,7 +142,7 @@
                     @endauth
                     <form method="POST" action="/logout">
                         @csrf
-                        <button class="text-red-500">Logout</button>
+                        <button class=" btn">Logout</button>
                     </form>
                 </div>
             </div>
