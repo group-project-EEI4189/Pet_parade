@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\PetDetails;
 use App\Models\Adoption;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AdoptionConfirmation;
+
 
 class AdoptionController extends Controller
 {
@@ -30,13 +33,16 @@ class AdoptionController extends Controller
             'phone' => 'required',
         ]);
 
-        \App\Models\Adoption::create([
+        $adoption = Adoption::create([
             'pet_id' => $request->pet_id,
             'name' => $request->name,
             'email' => $request->email,
             'address' => $request->address,
             'phone' => $request->phone,
         ]);
+
+        Mail::to($request->email)->send(new AdoptionConfirmation($adoption));
+
 
         return redirect()
             ->route('adoption.page')
